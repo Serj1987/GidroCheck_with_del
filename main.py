@@ -10,7 +10,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 
 connection_string = (
-    'postgres://msojsqyh:xBl-Ab3tNu_hVXBc4ylHJbSamWhhib4j@ella.db.elephantsql.com/msojsqyh')
+    'postgres://#####:xBl-Ab3tNu_hVXBc4ylHJbSamWhhib4j@ella.db.elephantsql.com/')
 
 
 class MainMenu(Screen):
