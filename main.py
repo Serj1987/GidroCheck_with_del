@@ -5,12 +5,19 @@ from kivymd.uix.datatables import MDDataTable
 from kivy.metrics import dp
 import psycopg2
 from datetime import datetime
-from kivy.uix.popup import Popup
 from kivy.uix.button import Button
+from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 
 connection_string = (
-    'postgres://#####:xBl-Ab3tNu_hVXBc4ylHJbSamWhhib4j@ella.db.elephantsql.com/')
+    'postgres://msojsqyh:xBl-Ab3tNu_hVXBc4ylHJbSamWhhib4j@ella.db.elephantsql.com/msojsqyh') 
+
+box = BoxLayout(orientation='vertical')
+box.add_widget(Label(text='здесь должен быть такой звук "ту-дум"', font_size=45))
+box.add_widget(Label(text='Введите номер детали', font_size=75))
+btn_close: Button = Button(text='закрыть', size_hint=(1, None), height=200, font_size=75)
+box.add_widget(btn_close)
 
 
 class MainMenu(Screen):
@@ -43,6 +50,17 @@ class SendScreen(Screen):
                                             str(self.ids.name_detail.text) + ' ' + str(self.ids.quantity.text) +
                                             ' ' + str(self.ids.comment.text))
 
+            self.ids.number_detail.text = ''
+            self.ids.quantity.text = ''
+            self.ids.comment.text = ''
+
+        else:
+            message_done = Popup(title='!Введите номер детали!', content=box, auto_dismiss=False, size_hint=(1, None), height=600)
+
+            btn_close.bind(on_press=message_done.dismiss)
+
+            message_done.open()
+
 
 class ArriveScreen(Screen):
     """ this class will work with added parts in database in two tables arrived or sent parts """
@@ -73,6 +91,17 @@ class ArriveScreen(Screen):
             self.update_lbl_arr.text = str('Последняя деталь: ' + str(self.ids.number_detail.text) + ' ' +
                                            str(self.ids.name_detail.text) + ' ' + str(self.ids.quantity.text) +
                                            ' ' + str(self.ids.comment.text))
+
+            self.ids.number_detail.text = ''
+            self.ids.quantity.text = ''
+            self.ids.comment.text = ''
+
+        else:
+            message_done = Popup(title='!Введите номер детали!', content=box, auto_dismiss=False, size_hint=(1, None), height=600)
+
+            btn_close.bind(on_press=message_done.dismiss)
+
+            message_done.open()
 
 
 class TableAllWindow(Screen):
@@ -317,7 +346,7 @@ class DeleteString(Screen):
         con.commit()
 
         btn_close: Button = Button(text='закрыть')
-        messege_done = Popup(title='Кто-то накосячил, Света убрала. Света- молдец!', content=(btn_close),
+        messege_done = Popup(title='Кто-то накосячил, Света убрала. Света- молодец!', content=(btn_close), size_hint=(1, None), height=400, 
                              auto_dismiss=False)
 
         btn_close.bind(on_press=messege_done.dismiss)
@@ -337,7 +366,7 @@ class DeleteString(Screen):
         con.commit()
 
         btn_close: Button = Button(text='закрыть')
-        messege_done = Popup(title='Кто-то накосячил, Света убрала. Света- молдец!', content=(btn_close),
+        messege_done = Popup(title='Кто-то накосячил, Света убрала. Света- молодец!', content=(btn_close), size_hint=(1, None), height=400, 
                              auto_dismiss=False)
 
         btn_close.bind(on_press=messege_done.dismiss)
