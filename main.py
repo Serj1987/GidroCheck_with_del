@@ -11,7 +11,7 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 
 connection_string = (
-    'postgres://msojsqyh:xBl-Ab3tNu_hVXBc4ylHJbSamWhhib4j@ella.db.elephantsql.com/msojsqyh') 
+    'postgres://:xBl-Ab3tNu_hVXBc4ylHJbSamWhhib4j@ella.db.elephantsql.com/') 
 
 box = BoxLayout(orientation='vertical')
 box.add_widget(Label(text='здесь должен быть такой звук "ту-дум"', font_size=45))
